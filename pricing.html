@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — Block.Aero</title>
+  <meta name="description" content="Block Aero subscription plans: Starter, Professional, and Enterprise. Every plan includes the Core Platform Subscription, full Aviation Blockchain Network access, and a monthly allowance of Aero Compute Credits (ACC). Back-to-birth records, airworthiness directives, and asset transfers are always free.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Block Aero">
+  <meta property="og:title" content="Pricing — Block.Aero">
+  <meta property="og:description" content="Three simple subscription plans with a monthly allowance of Aero Compute Credits (ACC). Talk to us for usage and program pricing.">
+  <meta property="og:url" content="https://www.block.aero/pricing.html">
+  <meta property="og:image" content="https://www.block.aero/images/logo_ring.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/logo_ring.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={corePlugins:{preflight:false},theme:{extend:{colors:{brand:{DEFAULT:'#1C5FC0',light:'#2B86D4',dark:'#164C9A',tint:'#eaf1fb'},accent:{orange:'#E8761A',gold:'#F5C53A',green:'#1AAB65'},navy:{DEFAULT:'#0E1320',deep:'#0A0E16',soft:'#141C2E'}},fontFamily:{display:['Space Grotesk','Inter','sans-serif'],body:['Inter','sans-serif'],mono:['JetBrains Mono','monospace']}}}}</script>
+  <style>
+    .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch; }
+    .price-card { display:flex; flex-direction:column; position:relative; }
+    .price-card.featured { border-color:var(--blue); box-shadow:var(--shadow-blue); }
+    .price-pop { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--blue); color:#fff; font-size:0.66rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:4px 12px; border-radius:999px; white-space:nowrap; }
+    .price-amt { font-family:var(--font-display); font-size:2.6rem; font-weight:700; color:var(--navy); line-height:1; letter-spacing:-0.02em; }
+    .price-per { color:var(--mist); font-weight:600; font-size:0.9rem; }
+    .price-alloc { font-family:var(--font-mono); font-weight:600; color:var(--blue); }
+    .price-card .btn { margin-top:auto; }
+    @media (max-width:860px){ .price-grid{ grid-template-columns:1fr; gap:30px; } .price-pop{ top:-11px; } }
+  </style>
+  <script defer data-domain="block.aero" src="https://plausible.io/script.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="index.html" class="logo"><span class="logo-mark" data-ba-logo="pulse"></span> Block<span class="logo-dot">.</span>Aero</a>
+    <ul class="nav-links">
+      <li><a href="platform.html">Platform</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="registries.html">Asset Registries</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://terminal.block.aero/account/login" class="nav-login">Login</a>
+      <a href="get-started.html" class="btn btn-primary">Get Started</a>
+      <button class="nav-toggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero page-hero">
+  <div class="container hero-inner">
+    <span class="eyebrow">Pricing</span>
+    <h1>Simple Subscriptions, <span class="text-grad">Usage That Scales</span></h1>
+    <p class="lead">Pick a plan and get to work. Every plan includes the Block Aero Core Platform Subscription, full access to the Aviation Blockchain Network — sandbox and production — and a monthly allowance of Aero Compute Credits (ACC) that meter what you do on the network. The records that matter most for safety and provenance are always free.</p>
+    <div class="hero-ctas">
+      <a href="get-started.html" class="btn btn-primary">Get Started</a>
+      <a href="contact.html#book" class="btn btn-outline">Talk to Sales</a>
+    </div>
+  </div>
+</section>
+
+<!-- Tiers -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Plans</span>
+      <h2>Choose Your Plan</h2>
+      <p>Prices in USD, billed monthly; annual billing is available. Every plan runs on the same trusted network — you're choosing capacity and support, not features.</p>
+    </div>
+    <div class="price-grid">
+
+      <!-- Starter -->
+      <div class="card price-card">
+        <span class="badge badge-core" style="align-self:flex-start;">Starter · SL I</span>
+        <h3 style="margin:14px 0 6px;">Starter</h3>
+        <p style="color:var(--slate);min-height:42px;">For smaller teams and first projects getting their records onto the network.</p>
+        <div style="margin:8px 0 4px;"><span class="price-amt">$1,699</span> <span class="price-per">/ month</span></div>
+        <p style="margin:10px 0 18px;"><span class="price-alloc">500,000 ACC</span> <span style="color:var(--mist);">credits / month included</span></p>
+        <ul class="checklist" style="margin-bottom:24px;">
+          <li>Digital passports, Data Package Creation &amp; openAPI</li>
+          <li>Sandbox + production network access</li>
+          <li>Free back-to-birth, ADs, ARCs &amp; transfers</li>
+          <li>Email &amp; chat support</li>
+        </ul>
+        <a href="get-started.html" class="btn btn-outline">Get Started</a>
+      </div>
+
+      <!-- Professional (featured) -->
+      <div class="card price-card featured">
+        <span class="price-pop">Most Popular</span>
+        <span class="badge badge-core" style="align-self:flex-start;">Professional · SL II</span>
+        <h3 style="margin:14px 0 6px;">Professional</h3>
+        <p style="color:var(--slate);min-height:42px;">For active USM sellers, MROs, and asset managers running steady volume.</p>
+        <div style="margin:8px 0 4px;"><span class="price-amt">$5,999</span> <span class="price-per">/ month</span></div>
+        <p style="margin:10px 0 18px;"><span class="price-alloc">1,750,000 ACC</span> <span style="color:var(--mist);">credits / month included</span></p>
+        <ul class="checklist" style="margin-bottom:24px;">
+          <li>Everything in Starter</li>
+          <li>~3.5× the monthly credit allowance</li>
+          <li>Shared account manager</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="get-started.html" class="btn btn-primary">Get Started</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="card price-card">
+        <span class="badge badge-addon" style="align-self:flex-start;">Enterprise · SL III</span>
+        <h3 style="margin:14px 0 6px;">Enterprise</h3>
+        <p style="color:var(--slate);min-height:42px;">For high-volume teardown programs, distributors, and registry operators.</p>
+        <div style="margin:8px 0 4px;"><span class="price-amt">$13,999</span> <span class="price-per">/ month</span></div>
+        <p style="margin:10px 0 18px;"><span class="price-alloc">5,000,000 ACC</span> <span style="color:var(--mist);">credits / month included</span></p>
+        <ul class="checklist" style="margin-bottom:24px;">
+          <li>Everything in Professional</li>
+          <li>Highest monthly credit allowance</li>
+          <li>Dedicated account manager</li>
+          <li>Priority onboarding &amp; SLA options</li>
+        </ul>
+        <a href="contact.html#book" class="btn btn-outline">Talk to Sales</a>
+      </div>
+
+    </div>
+    <p style="text-align:center;color:var(--mist);font-size:0.9rem;margin-top:24px;">Need more than Enterprise? <strong>Custom · SL IV</strong> programs cover fleet-wide, high-volume operations with 24/7/365 support, private channels, and registry programs like the AFRA-CAAC Registry — <a href="contact.html#book" style="color:var(--blue);font-weight:600;">talk to us</a>.</p>
+  </div>
+</section>
+
+<!-- Always free -->
+<section class="section soft">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Always Included</span>
+      <h2>The Essentials Are Free</h2>
+      <p>The records the industry depends on for safety and provenance never cost credits — so there's never a reason to skip them.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card"><h3>Back-to-Birth Records</h3><p>Build complete provenance histories at no per-record cost — no barrier to capturing the full story of an asset.</p></div>
+      <div class="card"><h3>Airworthiness &amp; ADs</h3><p>Issuing airworthiness release certificates (eARC) and recording airworthiness directive compliance are free.</p></div>
+      <div class="card"><h3>Asset Transfers</h3><p>Transferring ownership is free — and completing a transfer earns a credit rebate back to your balance.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- How credits work -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">How It Works</span>
+      <h2>Pay for Activity, Not Seats</h2>
+      <p>Aero Compute Credits meter what you actually do on the network. Most everyday actions draw only a small amount, so a plan's monthly allowance goes a long way.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card"><h3>A monthly allowance</h3><p>Each plan includes a pool of ACC credits that refreshes every month. Use them across registration, enrichment, documentation, and more.</p></div>
+      <div class="card"><h3>Volume is rewarded</h3><p>Large batch operations — like registering thousands of parts from a teardown — receive an automatic discount, so big projects scale efficiently.</p></div>
+      <div class="card"><h3>Top up or move up</h3><p>Busy month? Top up credits anytime, or step up a tier. We'll help you right-size — <a href="contact.html#book">talk to us about usage pricing</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="container">
+    <div class="cta-band">
+      <h2>Start Today, Scale When You're Ready</h2>
+      <p>Open your organization account to get going, or book a working session and we'll recommend the right plan for your volume.</p>
+      <div class="hero-ctas" style="justify-content: center;">
+        <a href="get-started.html" class="btn btn-primary">Get Started</a>
+        <a href="contact.html#book" class="btn btn-outline">Book a Meeting</a>
+        <a href="contact.html" class="btn btn-outline">Talk to Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark" data-ba-logo="static"></span> Block<span class="logo-dot">.</span>Aero</a>
+        <p>A digital passport for every aero asset — verified records on the Aviation Blockchain Network.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="platform.html#abn">Aviation Blockchain Network</a></li>
+          <li><a href="platform.html#baa">Digital Passports (BAA)</a></li>
+          <li><a href="platform.html#dss">Data Sharing Specification</a></li>
+          <li><a href="earc.html">eARC</a></li>
+          <li><a href="products.html#api">openAPI Integrations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="products.html#dam">Digital Asset Manager</a></li>
+          <li><a href="products.html#registry">Registry Manager</a></li>
+          <li><a href="registries.html">Asset Registries</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="afra-caac.html">AFRA-CAAC Registry</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="investors.html">Investors</a></li>
+          <li><a href="https://blockaero.bamboohr.com/careers" target="_blank" rel="noopener">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://support.block.aero/" target="_blank" rel="noopener">Support Hub</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="trust.html">Trust Center</a></li>
+          <li><a href="https://blockaerostatus.statuspage.io/" target="_blank" rel="noopener">Status</a></li>
+          <li><a href="https://terminal.block.aero/account/login">Platform Login</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Block Aero. All rights reserved.</span>
+      <span><a href="policies.html">Policies</a> · <a href="policies.html#terms">Terms of Use</a> · <a href="https://www.linkedin.com/company/block-aero" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://twitter.com/blockaerotech" target="_blank" rel="noopener">X</a> · <a href="https://www.youtube.com/watch?v=G0nLuGaaNSw&amp;t=10s" target="_blank" rel="noopener">YouTube</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/block-

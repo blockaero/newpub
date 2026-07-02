@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started — Block.Aero</title>
+  <meta name="description" content="Get started with Block Aero — live in production on the Aviation Blockchain Network. Tell us about your organization and our team will set you up with digital passports, data packages, and registries.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Block Aero">
+  <meta property="og:title" content="Get Started — Block.Aero">
+  <meta property="og:description" content="Get started on Block Aero — a digital passport for every aero asset, live on the Aviation Blockchain Network.">
+  <meta property="og:url" content="https://www.block.aero/get-started.html">
+  <meta property="og:image" content="https://www.block.aero/images/logo_ring.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/logo_ring.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={corePlugins:{preflight:false},theme:{extend:{colors:{brand:{DEFAULT:'#1C5FC0',light:'#2B86D4',dark:'#164C9A',tint:'#eaf1fb'},accent:{orange:'#E8761A',gold:'#F5C53A',green:'#1AAB65'},navy:{DEFAULT:'#0E1320',deep:'#0A0E16',soft:'#141C2E'}},fontFamily:{display:['Space Grotesk','Inter','sans-serif'],body:['Inter','sans-serif'],mono:['JetBrains Mono','monospace']}}}}</script>
+  <style>
+    .ea-form { display:grid; gap:16px; }
+    .ea-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .ea-field { display:flex; flex-direction:column; gap:6px; }
+    .ea-field.full { grid-column:1 / -1; }
+    .ea-field label { font-size:0.82rem; font-weight:600; color:var(--ink); }
+    .ea-field label .req { color:var(--orange); }
+    .ea-field input, .ea-field select, .ea-field textarea {
+      font-family:var(--font); font-size:0.95rem; color:var(--ink);
+      padding:11px 13px; border:1px solid var(--line); border-radius:9px; background:#fff; width:100%;
+    }
+    .ea-field input:focus, .ea-field select:focus, .ea-field textarea:focus { outline:2px solid var(--blue-light); outline-offset:1px; border-color:var(--blue); }
+    .ea-note { font-size:0.85rem; color:var(--mist); }
+    .ea-ok { display:none; background:rgba(26,171,101,0.08); border:1px solid rgba(26,171,101,0.35); color:var(--navy); border-radius:12px; padding:18px 20px; }
+    @media (max-width:640px){ .ea-row{ grid-template-columns:1fr; } }
+  </style>
+  <script defer data-domain="block.aero" src="https://plausible.io/script.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="index.html" class="logo"><span class="logo-mark" data-ba-logo="pulse"></span> Block<span class="logo-dot">.</span>Aero</a>
+    <ul class="nav-links">
+      <li><a href="platform.html">Platform</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="registries.html">Asset Registries</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://terminal.block.aero/account/login" class="nav-login">Login</a>
+      <a href="#request" class="btn btn-primary">Get Started</a>
+      <button class="nav-toggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero page-hero">
+  <div class="container hero-inner">
+    <span class="eyebrow">Get Started</span>
+    <h1>Get Started on <span class="text-grad">Block Aero</span></h1>
+    <p class="lead">Block Aero is live in production on the Aviation Blockchain Network, already trusted by organizations across the aerospace supply chain. Tell us a little about your operation and our team will get your account set up — sandbox and production.</p>
+  </div>
+</section>
+
+<section class="section" id="request">
+  <div class="container">
+    <div class="feature-row">
+      <!-- Form -->
+      <div>
+        <div class="section-head" style="margin-bottom:24px;">
+          <span class="eyebrow">Get Started</span>
+          <h2>Open Your Organization Account</h2>
+          <p>Required fields are marked <span style="color:var(--orange);">*</span>. We'll only use this to set up your account and follow up.</p>
+        </div>
+
+        <!-- HUBSPOT SWAP (one-time): create the "Get Started" form in HubSpot (Marketing → Forms),
+             then set HUBSPOT_PORTAL_ID and HUBSPOT_GS_FORM_ID in the script at the bottom of this page.
+             Until then, the form below composes an email to support@block.aero — no dead endpoint. -->
+        <div id="gs-hubspot" style="display:none;"></div>
+        <form class="ea-form" id="eaForm" novalidate>
+          <div class="ea-row">
+            <div class="ea-field"><label for="f-name">Full name <span class="req">*</span></label><input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Jane Doe"></div>
+            <div class="ea-field"><label for="f-email">Work email <span class="req">*</span></label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="jane@yourcompany.com"></div>
+          </div>
+          <div class="ea-row">
+            <div class="ea-field"><label for="f-company">Company / organization <span class="req">*</span></label><input id="f-company" name="company" type="text" required autocomplete="organization" placeholder="Your company"></div>
+            <div class="ea-field"><label for="f-role">Role / title</label><input id="f-role" name="role" type="text" autocomplete="organization-title" placeholder="e.g. Head of Asset Management"></div>
+          </div>
+          <div class="ea-row">
+            <div class="ea-field">
+              <label for="f-type">Organization type</label>
+              <select id="f-type" name="orgtype">
+                <option value="">Select…</option>
+                <option>USM seller / distributor</option>
+                <option>MRO</option>
+                <option>Airline / operator</option>
+                <option>Lessor / asset manager</option>
+                <option>OEM</option>
+                <option>Disassembly / EOL (CCAR-145)</option>
+                <option>Regulator / standards body</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="ea-field">
+              <label for="f-interest">Primary interest</label>
+              <select id="f-interest" name="interest">
+                <option value="">Select…</option>
+                <option>USM sales compliance &amp; data packages</option>
+                <option>Digital passports for assets</option>
+                <option>Asset registries / AFRA-CAAC</option>
+                <option>Fleet data management</option>
+                <option>eARC / airworthiness documents</option>
+                <option>Marketplace &amp; ERP integrations</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="ea-row">
+            <div class="ea-field"><label for="f-assets">Approx. assets (MSN / ESN / PART)</label><input id="f-assets" name="assets" type="text" inputmode="numeric" placeholder="e.g. 2,000"></div>
+            <div class="ea-field"><label for="f-phone">Phone (optional)</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+1 …"></div>
+          </div>
+          <div class="ea-field full"><label for="f-msg">Anything else?</label><textarea id="f-msg" name="message" rows="3" placeholder="Tell us about your next teardown, redelivery, audit, or USM deal."></textarea></div>
+          <div>
+            <button type="submit" class="btn btn-primary">Get Started</button>
+            <p class="ea-note" style="margin-top:12px;">Prefer email? Write to <a href="mailto:support@block.aero?subject=Get%20Started%20with%20Block%20Aero" style="color:var(--blue);font-weight:600;">support@block.aero</a>. Already have an account? <a href="https://terminal.block.aero/account/login" style="color:var(--blue);font-weight:600;">Log in</a>.</p>
+          </div>
+        </form>
+
+        <div class="ea-ok" id="eaOk">
+          <h3 style="margin-top:0;">Thanks — your details are ready to send.</h3>
+          <p style="margin-bottom:0;">Your email app should have opened with your details pre-filled to <strong>support@block.aero</strong>. Just hit send and we'll get you set up. If it didn't open, email us directly at <a href="mailto:support@block.aero?subject=Get%20Started%20with%20Block%20Aero" style="color:var(--blue);font-weight:600;">support@block.aero</a>.</p>
+        </div>
+      </div>
+
+      <!-- Reassurance rail -->
+      <div>
+        <div class="card" style="margin-bottom:20px;">
+          <h3 style="margin-top:0;">What happens next</h3>
+          <ul class="checklist" style="margin:0;">
+            <li>We confirm your details and reach out to get you going.</li>
+            <li>We set up your organization — sandbox and production.</li>
+            <li>You start creating digital passports and data packages.</li>
+          </ul>
+        </div>
+        <div class="card" style="margin-bottom:20px;">
+          <h3 style="margin-top:0;">Why teams join</h3>
+          <p style="margin:0;">A digital passport for every aircraft, engine, and part — so proof of identity, ownership, and compliance travels with the asset, and USM deals close in hours, not weeks.</p>
+        </div>
+        <div class="card">
+          <span class="badge badge-live" style="margin-bottom:10px;">Secure by design</span>
+          <p style="margin:0;">Built on an <strong>ISO/IEC 27001:2022-certified</strong> platform (ASA CB, BLOC-001-06-26-27). <a class="card-link" href="trust.html">Trust Center →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="container">
+    <div class="cta-band">
+      <h2>Prefer to Talk First?</h2>
+      <p>Book a working session and we'll walk through your use case and recommend the right plan.</p>
+      <div class="hero-ctas" style="justify-content: center;">
+        <a href="contact.html#book" class="btn btn-primary">Book a Meeting</a>
+        <a href="contact.html" class="btn btn-outline">Talk to Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark" data-ba-logo="static"></span> Block<span class="logo-dot">.</span>Aero</a>
+        <p>A digital passport for every aero asset — verified records on the Aviation Blockchain Network.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="platform.html#abn">Aviation Blockchain Network</a></li>
+          <li><a href="platform.html#baa">Digital Passports (BAA)</a></li>
+          <li><a href="platform.html#dss">Data Sharing Specification</a></li>
+          <li><a href="earc.html">eARC</a></li>
+          <li><a href="products.html#api">openAPI Integrations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="products.html#dam">Digital Asset Manager</a></li>
+          <li><a href="products.html#registry">Registry Manager</a></li>
+          <li><a href="registries.html">Asset Registries</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="afra-caac.html">AFRA-CAAC Registry</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="investors.html">Investors</a></li>
+          <li><a href="https://blockaero.bamboohr.com/careers" target="_blank" rel="noopener">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://support.block.aero/" target="_blank" rel="noopener">Support Hub</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="trust.html">Trust Center</a></li>
+          <li><a href="https://blockaerostatus.statuspage.io/" target="_blank" rel="noopener">Status</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Block Aero. All rights reserved.</span>
+      <span><a href="policies.html">Policies</a> · <a href="policies.html#terms">Terms of Use</a> · <a href="https://www.linkedin.com/company/block-aero" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://twitter.com/blockaerotech" target="_blank" rel="noopener">X</a> · <a href="https://www.youtube.com/watch?v=G0nLuGaaNSw&amp;t=10s" target="_blank" rel="noopener">YouTube</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/block-aero-logo.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Get Started form — HubSpot once IDs are set; until then composes an email to support@block.aero (no dead endpoint).
+  (function () {
+    var form = document.getElementById('eaForm');
+    if (!form) return;
+    // HUBSPOT SWAP: replace both values, keep everything else as-is.
+    var HUBSPOT_PORTAL_ID = 'REPLACE_WITH_PORTAL_ID';
+    var HUBSPOT_GS_FORM_ID = 'REPLACE_WITH_FORM_ID';
+    if (HUBSPOT_PORTAL_ID.indexOf('REPLACE') === -1 && HUBSPOT_GS_FORM_ID.indexOf('REPLACE') === -1) {
+      var s = document.createElement('script');
+      s.src = 'https://js.hsforms.net/forms/embed/v2.js';
+      s.onload = function () {
+        window.hbspt.forms.create({ portalId: HUBSPOT_PORTAL_ID, formId: HUBSPOT_GS_FORM_ID, region: 'na1', target: '#gs-hubspot' });
+        document.getElementById('gs-hubspot').style.display = '';
+        form.style.display = 'none';
+      };
+      document.head.appendChild(s);
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var get = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+      var name = get('f-name'), email = get('f-email'), company = g                                         
