@@ -173,11 +173,13 @@ h4 { font-size: 1.05rem; }
 .logo:hover { color: var(--navy); }
 .logo-dot { color: var(--orange); margin-left: -0.12em; margin-right: -0.12em; }
 .logo-mark {
+  flex: none;
   width: 34px; height: 34px;
   display: grid;
   place-items: center;
 }
 .logo-mark svg, .logo-mark img { width: 34px; height: 34px; }
+.logo-word { height: 15px; width: auto; display: block; flex: none; }
 .nav-links {
   display: flex;
   align-items: center;
@@ -1023,6 +1025,4 @@ h4 { font-size: 1.05rem; }
   .hero-dark { padding: 64px 0 64px; }
   .section { padding: 56px 0; }
   .cta-band { padding: 48px 24px; }
-  .stat-band::after { display: none; }
-  .hero-passport svg { max-width: 360px; }
-}
+  .stat-band::after { disp
