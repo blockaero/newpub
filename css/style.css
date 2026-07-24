@@ -268,6 +268,7 @@ h4 { font-size: 1.05rem; }
   color: var(--orange); background: rgba(232,118,26,0.1); border: 1px solid rgba(232,118,26,0.3);
   border-radius: 999px; padding: 2px 7px; margin-left: 8px; vertical-align: middle; line-height: 1.1;
 }
+.dd-ea.dd-soon { color: var(--mist); background: var(--bg-soft); border-color: var(--line); }
 
 @media (max-width: 720px) {
   .nav-links .has-dd > .dd {
