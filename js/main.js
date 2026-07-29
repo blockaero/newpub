@@ -50,16 +50,15 @@ document.addEventListener('DOMContentLoaded', function () {
       return a;
     }
 
-    // SOLUTIONS — simple list
+    // SOLUTIONS — grouped by customer business type
     var solItems = [
-      ['Digital Passports & Aviation Data Packages', 'solutions.html#passports'],
-      ['Registry as a Service', 'solutions.html#raas'],
-      ['USM & Asset Trading', 'solutions.html#usm'],
-      ['Aircraft Leasing & Technical Asset Management', 'solutions.html#leasing'],
-      ['AI Quality Control', 'solutions.html#ai-qc'],
-      ['AI Records Management', 'solutions.html#ai-records'],
-      ['Marketplace System of Record', 'solutions.html#marketplace'],
-      ['eARC — Electronic Release Certificate', 'earc.html']
+      ['Parts Distributors', 'solutions.html#parts-distributors'],
+      ['Asset Managers & Traders', 'solutions.html#asset-managers'],
+      ['Disassembly & Teardown Specialists', 'solutions.html#disassembly'],
+      ['MROs', 'solutions.html#mros'],
+      ['Lessors', 'solutions.html#lessors'],
+      ['OEMs', 'solutions.html#oems'],
+      ['Regulators & Authorities', 'solutions.html#regulators']
     ];
     var solA = navLinks.querySelector('a[href="solutions.html"]');
     if (solA) {
