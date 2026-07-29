@@ -37,24 +37,28 @@ document.addEventListener('DOMContentLoaded', function () {
       c.className = 'ddc'; c.setAttribute('aria-hidden', 'true'); c.textContent = '▾';
       a.appendChild(c);
     }
-    function link(label, href, ea) {
+    function link(label, href, badge) {
       var a = document.createElement('a');
       a.href = href; a.textContent = label;
       if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener'; }
-      if (ea) { var b = document.createElement('span'); b.className = 'dd-ea'; b.textContent = 'Early Access'; a.appendChild(b); }
+      if (badge) {
+        var b = document.createElement('span');
+        b.className = badge === 'Coming Soon' ? 'dd-ea dd-soon' : 'dd-ea';
+        b.textContent = badge;
+        a.appendChild(b);
+      }
       return a;
     }
 
-    // SOLUTIONS — simple list
+    // SOLUTIONS — grouped by customer business type
     var solItems = [
-      ['Digital Passports & Aviation Data Packages', 'solutions.html#passports'],
-      ['Registry as a Service', 'solutions.html#raas'],
-      ['USM & Asset Trading', 'solutions.html#usm'],
-      ['Aircraft Leasing & Technical Asset Management', 'solutions.html#leasing'],
-      ['AI Quality Control', 'solutions.html#ai-qc'],
-      ['AI Records Management', 'solutions.html#ai-records'],
-      ['Marketplace System of Record', 'solutions.html#marketplace'],
-      ['eARC — Electronic Release Certificate', 'earc.html']
+      ['Parts Distributors', 'solutions.html#parts-distributors'],
+      ['Asset Managers & Traders', 'solutions.html#asset-managers'],
+      ['Disassembly & Teardown Specialists', 'solutions.html#disassembly'],
+      ['MROs', 'solutions.html#mros'],
+      ['Lessors', 'solutions.html#lessors'],
+      ['OEMs', 'solutions.html#oems'],
+      ['Regulators & Authorities', 'solutions.html#regulators']
     ];
     var solA = navLinks.querySelector('a[href="solutions.html"]');
     if (solA) {
@@ -65,20 +69,19 @@ document.addEventListener('DOMContentLoaded', function () {
       li.appendChild(dd);
     }
 
-    // PRODUCTS — mega menu with groups
+    // PRODUCTS — mega menu grouped by category (Blockchain / AI & Agentic / FinTech)
     var prodGroups = [
-      { h: ['Digital Asset Manager', 'products.html#dam'], items: [
-        ['Data Package Creation', 'products.html#data-packages'],
-        ['openAPI Integration Services', 'products.html#api'],
-        ['Pricing & Plans', 'pricing.html']
+      { h: 'Blockchain', items: [
+        ['Digital Asset Manager', 'products.html#dam'],
+        ['Registry Manager', 'products.html#registry']
       ]},
-      { h: ['Registry Manager', 'products.html#registry'], items: [
-        ['Registry as a Service', 'products.html#registry'],
-        ['Asset Registries', 'registries.html']
+      { h: 'AI & Agentic', items: [
+        ['AI Records Manager', 'arm.html', 'Early Access'],
+        ['AI QC Manager', 'products.html#aiqc', 'Early Access']
       ]},
-      { h: ['Early Access', 'products.html'], items: [
-        ['AI Records Manager', 'products.html#airm', true],
-        ['AI QC Manager', 'products.html#aiqc', true]
+      { h: 'FinTech', items: [
+        ['Cross-Border Asset Seller Financing', 'products.html#fintech', 'Coming Soon'],
+        ['Aero-to-Power for Microgrid & Mobile Power', 'products.html#fintech', 'Coming Soon']
       ]}
     ];
     var prodA = navLinks.querySelector('a[href="products.html"]');
@@ -88,7 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
       var mega = document.createElement('div'); mega.className = 'dd dd-mega';
       prodGroups.forEach(function (g) {
         var col = document.createElement('div'); col.className = 'dd-col';
-        var hl = link(g.h[0], g.h[1]); hl.className = 'dd-h'; col.appendChild(hl);
+        var hl = document.createElement('span'); hl.className = 'dd-h'; hl.textContent = g.h;
+        col.appendChild(hl);
         g.items.forEach(function (it) { col.appendChild(link(it[0], it[1], it[2])); });
         mega.appendChild(col);
       });
