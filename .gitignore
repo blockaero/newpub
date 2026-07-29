@@ -1,0 +1,27 @@
+# Imagery pipeline working state (see images/_pipeline/README.md).
+#
+# Raw Gemini output is kept on disk for provenance but not committed: full-size
+# generations run 1-2 MB each, and across the 50-image spec plus rejected takes
+# that is hundreds of MB. The deploy workflow strips _pipeline/ from what ships,
+# but it cannot strip anything from git history — history is permanent.
+#
+# What DOES get committed: the patched masters under _pipeline/masters/ named per
+# the spec, and the web derivatives in images/og|iso|abstract|tile|photos/.
+
+# Raw, unpatched Gemini downloads
+images/_pipeline/raw/*
+!images/_pipeline/raw/.gitkeep
+
+# The ARM reference set — local reference material, watermarked and unprocessed
+images/_pipeline/arm-reference/*
+!images/_pipeline/arm-reference/.gitkeep
+# ...except a small curated subset for sessions without the local copy
+!images/_pipeline/arm-reference/committed/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+.vscode/
+.idea/

@@ -29,21 +29,50 @@ assets — full resolution, no compression pass. The web derivative gets exporte
 from here into the shipping directory (`images/og/`, `images/iso/`,
 `images/abstract/`, `images/tile/`, `images/photos/`).
 
-**`arm-reference/`** — the existing AI Records Manager asset set, pasted in
-wholesale. Two jobs:
+**`arm-reference/`** — the existing AI Records Manager asset set.
 
-1. **Reuse.** Spec entries U33, U34 and C11 target the AI & Agentic line. If the
-   ARM set already contains a usable image, recrop it instead of generating a new
-   one and note the reuse in `MANIFEST.md`. Cheaper and more consistent than
-   regenerating.
+> **These are RAW downloads. The Gemini sparkle watermark is still on them.**
+> What was copied in is the contents of the ARM project's download folder, not
+> its patched masters. Treat every file here as unprocessed Gemini output.
+
+Two jobs, and the watermark affects one of them:
+
+1. **Reuse.** Spec entries C11, U33 and U34 target the AI & Agentic line. If the
+   ARM set already contains a usable image, reusing it beats regenerating — but
+   it is **not** a straight recrop, because the sparkle is still present. The
+   sequence is: locate the sparkle with `patch_sparkle.py find`, patch it (`blur`
+   for flat backgrounds, `shift` when it sits on a rule or edge), confirm with
+   `check` at realistic display size, *then* crop to the spec's target ratio, then
+   export the web derivative. Log it in `MANIFEST.md` with the **Reused from** and
+   **Processing** fields, recording exactly how the sparkle came out — same
+   standard as a freshly generated image.
 2. **Style reference.** 21 of the 50 planned images are isometric and have to read
    as one system. The ARM set is the closest existing body of on-brand Block Aero
    illustration — mine it for the isometric angle, line weight, platform
-   thickness and accent-colour discipline before generating anything new.
+   thickness and accent-colour discipline before generating anything new. The
+   watermark is irrelevant for this purpose; don't patch anything you're only
+   looking at.
+
+Also note: these are raw, so they have **not** been guardrail-checked against this
+project's brief. Anything reused needs the full check at full resolution — rendered
+text, liveries, OEM cues, faces — before it ships, exactly as if you had just
+generated it.
 
 Keep the ARM set's original filenames and its own `MANIFEST.md` if it has one.
 Don't renumber it into this spec's sequence — it's a separate inventory, and
 conflating the two loses which images were audited against which brief.
+
+**Not committed.** `.gitignore` excludes the image files in this directory. Fifty
+full-size Gemini PNGs are roughly 50–100 MB, and git history is permanent — the
+deploy workflow strips `_pipeline/` from what ships, but it cannot strip anything
+from history. Only the patched derivatives that actually get reused go into the
+repo, under their spec filenames in `masters/` and the shipping directories.
+
+If a Cowork session runs somewhere without your local copy (a remote container,
+a fresh clone), it won't see this directory at all. For that case, commit a small
+curated subset — five to eight representative isometrics is plenty for style
+reference — under `arm-reference/committed/`, which `.gitignore` deliberately
+leaves tracked.
 
 ## Working rules
 

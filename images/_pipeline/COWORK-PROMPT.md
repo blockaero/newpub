@@ -37,12 +37,21 @@ Read these first, in this order:
 Before generating anything:
 
 - Check images/_pipeline/arm-reference/ for images that already satisfy an entry
-  in your batch. The AI Records Manager set is on-brand Block Aero work. If
-  something fits, recrop it and log it as a reuse instead of generating — cheaper
-  and more consistent. This matters most for C11, U33 and U34 (the AI & Agentic
-  line).
+  in your batch — most relevant to C11, U33 and U34 (the AI & Agentic line).
+  IMPORTANT: that directory holds RAW Gemini downloads with the sparkle watermark
+  still on them, not finished masters. Reuse is therefore patch -> crop -> export,
+  not a straight recrop: run patch_sparkle.py find, patch with blur or shift,
+  confirm with check, then crop to the spec ratio. A reused image also has NOT
+  been guardrail-checked against this project's brief — give it the full
+  full-resolution check (rendered text, liveries, OEM cues, faces) exactly as if
+  you had just generated it. Log it with the "Reused from" and "Processing"
+  fields.
 - Mine arm-reference/ for style reference regardless. 21 of the 50 images are
-  isometric and must read as one system.
+  isometric and must read as one system. The watermark doesn't matter for
+  look-at reference — don't patch anything you're only studying.
+- If arm-reference/ is empty or missing, the local ARM copy isn't present in this
+  environment. Check arm-reference/committed/ for the curated subset, and say so
+  rather than silently proceeding without style reference.
 - Locate every slot by its anchor, never by line number. The spec identifies each
   slot by a section id, an <svg> aria-label string, or heading text — grep for
   that. The spec deliberately contains no line numbers: earlier revisions used
