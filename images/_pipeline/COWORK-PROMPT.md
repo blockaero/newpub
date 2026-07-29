@@ -28,7 +28,8 @@ BATCH: 1 — entries C5 through C11 (the seven 1200x630 social share cards)
 Read these first, in this order:
 1. images/IMAGERY-SPEC.md — the gap analysis and the full 50-image inventory.
    Your batch's entries are in §3 with per-image filename, family, target ratio,
-   destination slot and brief. §4 has the rollout plan.
+   destination slot anchor and brief. §4 has the rollout plan; §5 has the
+   revision history and why slots are anchored rather than line-numbered.
 2. images/_pipeline/README.md — the working directory contract: where raw output,
    masters, and the ARM reference set live, and the pinned palette for this set.
 3. images/_pipeline/MANIFEST.md — the provenance format you must log to.
@@ -42,10 +43,12 @@ Before generating anything:
   line).
 - Mine arm-reference/ for style reference regardless. 21 of the 50 images are
   isometric and must read as one system.
-- Re-verify every slot line reference in your batch against the current files.
-  The spec's line numbers are accurate as of commit 684cd10 and no further — a
-  single restructure commit has already invalidated two of them. If a slot has
-  moved or gone, say so and stop rather than guessing.
+- Locate every slot by its anchor, never by line number. The spec identifies each
+  slot by a section id, an <svg> aria-label string, or heading text — grep for
+  that. The spec deliberately contains no line numbers: earlier revisions used
+  them and two consecutive commits invalidated every reference. If an anchor
+  doesn't resolve, the slot has genuinely moved or gone — stop and say so rather
+  than guessing at a nearby line.
 
 Palette, pinned to match css/style.css (NOT the ARM set's #0E1320):
 navy #0A0E16 / #141C2E, blue #1C5FC0 / #2B86D4, orange #E8761A, gold #F5C53A,
