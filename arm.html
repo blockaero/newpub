@@ -18,6 +18,17 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={corePlugins:{preflight:false},theme:{extend:{colors:{brand:{DEFAULT:'#1C5FC0',light:'#2B86D4',dark:'#164C9A',tint:'#eaf1fb'},accent:{orange:'#E8761A',gold:'#F5C53A',green:'#1AAB65'},navy:{DEFAULT:'#0E1320',deep:'#0A0E16',soft:'#141C2E'}},fontFamily:{display:['Space Grotesk','Inter','sans-serif'],body:['Inter','sans-serif'],mono:['JetBrains Mono','monospace']}}}}</script>
+  <style>
+    .price-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; align-items:stretch; max-width:820px; margin:0 auto; }
+    .price-card { display:flex; flex-direction:column; position:relative; }
+    .price-card.featured { border-color:var(--blue); box-shadow:var(--shadow-blue); }
+    .price-pop { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--blue); color:#fff; font-size:0.66rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:4px 12px; border-radius:999px; white-space:nowrap; }
+    .price-amt { font-family:var(--font-display); font-size:2.6rem; font-weight:700; color:var(--navy); line-height:1; letter-spacing:-0.02em; }
+    .price-per { color:var(--mist); font-weight:600; font-size:0.9rem; }
+    .price-alloc { font-family:var(--font-mono); font-weight:600; color:var(--blue); }
+    .price-card .btn { margin-top:auto; }
+    @media (max-width:860px){ .price-grid{ grid-template-columns:1fr; gap:30px; } .price-pop{ top:-11px; } }
+  </style>
   <script defer data-domain="block.aero" src="https://plausible.io/script.js"></script>
 </head>
 <body>
@@ -29,6 +40,7 @@
       <li><a href="platform.html">Platform</a></li>
       <li><a href="solutions.html">Solutions</a></li>
       <li><a href="products.html">Products</a></li>
+      <li><a href="arm.html">AI Records</a></li>
       <li><a href="registries.html">Asset Registries</a></li>
       <li><a href="news.html">News</a></li>
       <li><a href="about.html">About</a></li>
@@ -46,12 +58,12 @@
   <div class="container hero-inner">
     <span class="eyebrow">AI &amp; Agentic · Early Access</span>
     <h1>AI <span class="text-grad">Records Manager</span></h1>
-    <p class="lead">An aircraft or part is worth a fraction of its value without complete, verifiable records — yet most of that history still arrives as banker's boxes of scans, mixed-quality PDFs, dirty tags, and handwritten entries. AI Records Manager reads that reality and turns a legacy paper estate into structured, verifiable records at scale — classified, cross-checked, and anchored to each asset's digital passport.</p>
+    <p class="lead">An aircraft or part is worth a fraction of its value without complete, verifiable records — yet most of that history still arrives as banker's boxes of scans, mixed-quality PDFs, dirty tags, and handwritten entries. AI Records Manager reads that reality and turns a legacy paper estate into structured, verifiable records at scale — classified, cross-checked, and anchored to each asset's digital passport. It runs on <strong>Tessaron</strong>, Block Aero's meta-model for aviation documents.</p>
     <div class="hero-ctas">
-      <a href="about.html#contact" class="btn btn-primary">Request Early Access</a>
-      <a href="contact.html#book" class="btn btn-outline">Book a Meeting</a>
+      <a href="https://ai-records-manager.com" class="btn btn-primary" target="_blank" rel="noopener">Start Free</a>
+      <a href="https://ai-records-manager.com" class="btn btn-outline" target="_blank" rel="noopener">Book a Demo</a>
     </div>
-    <p class="hero-subnote" style="margin-top:14px;font-size:0.92rem;color:var(--mist);">Part of the AI &amp; Agentic product line, built on the Digital Asset Manager. <a href="products.html#aiqc" style="color:var(--blue);font-weight:600;">See AI QC Manager →</a></p>
+    <p class="hero-subnote" style="margin-top:14px;font-size:0.92rem;color:var(--mist);">Free to start — 50 assets, no credit card, at <a href="https://ai-records-manager.com" style="color:var(--blue);font-weight:600;" target="_blank" rel="noopener">ai-records-manager.com</a>. Already on a Block Aero Core plan? ARM is included. <a href="products.html#aiqc" style="color:var(--blue);font-weight:600;">See AI QC Manager →</a></p>
   </div>
 </section>
 
@@ -223,6 +235,49 @@
   </div>
 </section>
 
+<!-- Pricing -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Pricing</span>
+      <h2>Start Free. Upgrade When the Records Demand It.</h2>
+      <p>Prices in USD, billed monthly; annual prepaid billing is available at 10% off. Usage is metered in Aero Compute Credits (ACC) — the same unified credit used across the Block Aero platform, at 1 ACC = $0.01.</p>
+    </div>
+    <div class="price-grid">
+      <div class="card price-card">
+        <span class="badge badge-core" style="align-self:flex-start;">Free Lite</span>
+        <h3 style="margin:14px 0 6px;">Free Lite</h3>
+        <p style="color:var(--slate);min-height:42px;">Put a real records project through ARM — no credit card required.</p>
+        <div style="margin:8px 0 4px;"><span class="price-amt">$0</span> <span class="price-per">/ month</span></div>
+        <p style="margin:10px 0 18px;"><span class="price-alloc">5,000 ACC</span> <span style="color:var(--mist);">trial credits (14-day)</span></p>
+        <ul class="checklist" style="margin-bottom:24px;">
+          <li>Full ARM experience, up to 50 assets</li>
+          <li>Tessaron classification &amp; field extraction</li>
+          <li>Human-in-the-loop approval workflow</li>
+          <li>Upgrade anytime — your work carries over</li>
+        </ul>
+        <a href="https://ai-records-manager.com" class="btn btn-outline" target="_blank" rel="noopener">Start Free</a>
+      </div>
+      <div class="card price-card featured">
+        <span class="price-pop">Early Access</span>
+        <span class="badge badge-core" style="align-self:flex-start;">ARM Pro</span>
+        <h3 style="margin:14px 0 6px;">ARM Pro</h3>
+        <p style="color:var(--slate);min-height:42px;">Full ARM with unlimited assets, for teams working a whole records estate.</p>
+        <div style="margin:8px 0 4px;"><span class="price-amt">$499</span> <span class="price-per">/ month</span></div>
+        <p style="margin:10px 0 18px;"><span class="price-alloc">50,000 ACC</span> <span style="color:var(--mist);">/ month included</span></p>
+        <ul class="checklist" style="margin-bottom:24px;">
+          <li>Unlimited assets — no asset cap</li>
+          <li><strong>250,000 welcome credits</strong> on signup (valid 90 days)</li>
+          <li>Document packages and reports at $3.00 each</li>
+          <li>Top up credits anytime, or step up to a Core plan</li>
+        </ul>
+        <a href="https://ai-records-manager.com" class="btn btn-primary" target="_blank" rel="noopener">Get ARM Pro</a>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--mist);font-size:0.9rem;margin-top:24px;max-width:780px;margin-left:auto;margin-right:auto;">ARM plans cover records processing and do not include the Aviation Blockchain Network. Every <a href="pricing.html" style="color:var(--blue);font-weight:600;">Block Aero Core subscription (SL I–III)</a> includes AI Records Manager alongside blockchain-backed digital passports, with monthly ACC allowances from 500,000 — see the <a href="acc-rates.html" style="color:var(--blue);font-weight:600;">published ACC rate schedule</a>.</p>
+  </div>
+</section>
+
 <!-- Why Block Aero -->
 <section class="section soft">
   <div class="container">
@@ -236,7 +291,7 @@
       <div class="card"><h3>Human-in-the-loop</h3><p>AI proposes; your team disposes. Approvals stay with the people accountable for the record.</p></div>
       <div class="card"><h3>Feeds data packages</h3><p>Structured records flow straight into Data Package Creation and #RegistryReady submissions — no second pass.</p></div>
       <div class="card"><h3>Pairs with AI QC Manager</h3><p>Where AI Records Manager structures the record, <a href="products.html#aiqc">AI QC Manager</a> reviews it against the physical part and flags mismatches.</p></div>
-      <div class="card"><h3>ISO/IEC 27001:2022 certified</h3><p>Run on a platform certified by the ASA Certification Body (Certificate BLOC-001-06-26-27). <a href="trust.html">Trust Center →</a></p></div>
+      <div class="card"><h3>Backed by a certified platform</h3><p>Block Aero Core is ISO/IEC 27001:2022 certified by the ASA Certification Body (Certificate BLOC-001-06-26-27). AI Records Manager is in Early Access and is not yet within that certified scope, though it is operated under the same security program. <a href="trust.html">Trust Center →</a></p></div>
     </div>
   </div>
 </section>
@@ -260,10 +315,10 @@
   <div class="container">
     <div class="cta-band">
       <h2>Put Your Paper Estate to Work</h2>
-      <p>AI Records Manager is in Early Access, rolling out to a limited set of organizations. Tell us about your records and we'll show you what structuring them looks like.</p>
+      <p>Start free with up to 50 assets — no credit card. AI Records Manager is in Early Access, and everything you structure carries over when you upgrade.</p>
       <div class="hero-ctas" style="justify-content: center;">
-        <a href="about.html#contact" class="btn btn-primary">Request Early Access</a>
-        <a href="contact.html#book" class="btn btn-outline">Book a Meeting</a>
+        <a href="https://ai-records-manager.com" class="btn btn-primary" target="_blank" rel="noopener">Start Free</a>
+        <a href="https://ai-records-manager.com" class="btn btn-outline" target="_blank" rel="noopener">Book a Demo</a>
         <a href="products.html" class="btn btn-outline">All Products</a>
       </div>
     </div>
@@ -291,6 +346,7 @@
         <h4>Products</h4>
         <ul>
           <li><a href="products.html#dam">Digital Asset Manager</a></li>
+          <li><a href="arm.html">AI Records Manager</a></li>
           <li><a href="products.html#registry">Registry Manager</a></li>
           <li><a href="arm.html">AI Records Manager</a></li>
           <li><a href="products.html#aiqc">AI QC Manager</a></li>
