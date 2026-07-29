@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /images/IMAGERY-SPEC.md
+Disallow: /images/README.md
+Disallow: /images/_pipeline/
 
 Sitemap: https://www.block.aero/sitemap.xml

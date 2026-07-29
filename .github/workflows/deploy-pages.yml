@@ -25,6 +25,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Strip non-shipping working files
+        # images/_pipeline holds raw image-generation output and provenance —
+        # working state, never referenced by the HTML. Left in place it would
+        # ship hundreds of MB of rejected generations to Pages.
+        run: rm -rf images/_pipeline images/IMAGERY-SPEC.md images/README.md
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
