@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /images/IMAGERY-SPEC.md
 
 Sitemap: https://www.block.aero/sitemap.xml
