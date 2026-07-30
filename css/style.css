@@ -884,6 +884,27 @@ h4 { font-size: 1.05rem; }
 .card-photo { margin: -28px -28px 18px; border-bottom: 1px solid var(--line); overflow: hidden; }
 .card-photo img { width: 100%; height: 188px; object-fit: cover; display: block; }
 
+/* ---------- Moments gallery (life-at-Block-Aero grid) ---------- */
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.gallery-item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 24px 14px 10px;
+  font-size: 0.78rem; font-weight: 600; color: #fff;
+  background: linear-gradient(0deg, rgba(10,14,22,0.82) 0%, rgba(10,14,22,0) 100%);
+}
+@media (max-width: 960px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .gallery-item img { transition: none; } }
+
 /* ---------- Scroll reveal ---------- */
 .reveal {
   opacity: 0;
