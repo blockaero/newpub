@@ -29,13 +29,18 @@ assets — full resolution, no compression pass. The web derivative gets exporte
 from here into the shipping directory (`images/og/`, `images/iso/`,
 `images/abstract/`, `images/tile/`, `images/photos/`).
 
-**`arm-reference/`** — the existing AI Records Manager asset set.
+**`arm-reference/`** — OPTIONAL. A place to put the existing AI Records Manager
+asset set, if you have it handy, so a batch can reuse or reference it. This
+directory is normally empty and that is completely fine — nothing in the plan
+requires it. Don't go out of your way to populate it; if it's empty, every batch
+just generates everything fresh, including the AI & Agentic entries.
 
-> **These are RAW downloads. The Gemini sparkle watermark is still on them.**
-> What was copied in is the contents of the ARM project's download folder, not
-> its patched masters. Treat every file here as unprocessed Gemini output.
+If you do have that set sitting on a local machine and it's convenient to drop
+in, here's what to know first: it's likely RAW Gemini downloads with the sparkle
+watermark still on. Treat anything you find in here as unprocessed output, not a
+finished master.
 
-Two jobs, and the watermark affects one of them:
+Two jobs if files are present, and the watermark affects one of them:
 
 1. **Reuse.** Spec entries C11, U33 and U34 target the AI & Agentic line. If the
    ARM set already contains a usable image, reusing it beats regenerating — but
@@ -68,11 +73,9 @@ deploy workflow strips `_pipeline/` from what ships, but it cannot strip anythin
 from history. Only the patched derivatives that actually get reused go into the
 repo, under their spec filenames in `masters/` and the shipping directories.
 
-If a Cowork session runs somewhere without your local copy (a remote container,
-a fresh clone), it won't see this directory at all. For that case, commit a small
-curated subset — five to eight representative isometrics is plenty for style
-reference — under `arm-reference/committed/`, which `.gitignore` deliberately
-leaves tracked.
+`arm-reference/committed/` is tracked in git (unlike the rest of this directory)
+in case a small curated subset is ever worth checking in for style reference. It
+is also fine to leave empty forever — nothing downstream depends on it.
 
 ## Working rules
 
