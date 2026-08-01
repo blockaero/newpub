@@ -98,6 +98,40 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       pli.appendChild(mega);
     }
+
+    // ABOUT — simple list. Each item is a summary page that carries its own
+    // overview content and routes on to its dedicated child pages, so the
+    // children (Leadership, Contact Us, and the Americas programs) are
+    // deliberately absent from the menu itself.
+    var aboutItems = [
+      ['Company Information', 'company.html'],
+      ['Compliance & Certifications', 'trust.html']
+      // ['Block Aero Americas', 'americas.html']  <- add when the Americas pages ship
+    ];
+    var abtA = navLinks.querySelector('a[href="about.html"]');
+    if (abtA) {
+      var ali = abtA.closest('li'); ali.classList.add('has-dd'); caret(abtA);
+      abtA.setAttribute('aria-haspopup', 'true');
+      var add = document.createElement('div'); add.className = 'dd';
+      aboutItems.forEach(function (it) { add.appendChild(link(it[0], it[1])); });
+      ali.appendChild(add);
+    }
+
+    // Light the parent nav item for any page inside its cluster, including
+    // children that never appear in a dropdown. The href match above only
+    // covers top-level pages.
+    var cluster = {
+      'about.html': ['company.html', 'leadership.html', 'board.html', 'contact.html', 'trust.html', 'policies.html'],
+      'solutions.html': ['earc.html'],
+      // registries.html and arm.html are their own top-level nav items, so the
+      // href match above already highlights them.
+      'products.html': ['pricing.html']
+    };
+    Object.keys(cluster).forEach(function (parent) {
+      if (cluster[parent].indexOf(path) === -1) return;
+      var a = navLinks.querySelector('a[href="' + parent + '"]');
+      if (a) a.classList.add('active');
+    });
   })();
 
   // Brand mark — animated hex ring (Block Aero Logo Engine v1.3.0)

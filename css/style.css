@@ -1026,4 +1026,97 @@ h4 { font-size: 1.05rem; }
   .hero-dark { padding: 64px 0 64px; }
   .section { padding: 56px 0; }
   .cta-band { padding: 48px 24px; }
-  .stat-band::after { disp
+  .stat-band::after { display: none; }
+}
+
+/* ==========================================================
+   About cluster — sub-navigation + logo marquee
+   ========================================================== */
+
+/* ---------- Cluster sub-navigation ----------
+   Sits directly under the header on pages that belong to a cluster
+   (Company Information / Leadership / Contact). Children of a dropdown
+   item have no presence in the top nav, so this is how a visitor moves
+   sideways between siblings and back up to the summary page. */
+.subnav {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+.subnav .container {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.subnav a {
+  flex: none;
+  padding: 14px 14px 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--slate);
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.subnav a:hover { color: var(--navy); }
+.subnav a[aria-current="page"] {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+  font-weight: 600;
+}
+@media (max-width: 720px) {
+  .subnav a { padding: 12px 10px 10px; font-size: 0.86rem; }
+}
+
+/* ---------- Logo marquee ----------
+   Opt-in variant of .logo-strip: the customer row scrolls continuously,
+   the regulator/standards row stays put. The track holds the list twice
+   and animates to -50%, so the loop point is invisible. The 46px gap is
+   applied as margin-right on each logo (not flex gap) — that keeps every
+   item's box identical, which is what makes -50% land exactly on the
+   start of the duplicate. */
+.logo-strip .logo-viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+.logo-strip .logo-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  row-gap: 28px;
+  animation: baMarquee 60s linear infinite;
+}
+.logo-strip .logo-track img {
+  flex: none;
+  height: 30px;
+  width: auto;
+  max-width: 170px;
+  margin-right: 46px;
+  object-fit: contain;
+  opacity: 0.82;
+  transition: opacity 0.2s ease;
+}
+.logo-strip .logo-track img:hover { opacity: 1; }
+/* Pause on hover and on keyboard focus — logo images aren't focusable,
+   so hover alone would leave keyboard users no way to stop it. */
+.logo-strip:hover .logo-track,
+.logo-strip:focus-within .logo-track { animation-play-state: paused; }
+@keyframes baMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Fall back to the static wrapped row this replaced, and drop the
+     duplicate so the customer list isn't rendered twice. */
+  .logo-strip .logo-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 24px;
+  }
+  .logo-strip .logo-track img[data-clone] { display: none; }
+  .logo-strip .logo-viewport { -webkit-mask-image: none; mask-image: none; }
+}
