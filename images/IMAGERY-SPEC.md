@@ -1,6 +1,6 @@
 # block.aero imagery gap analysis & generation spec
 
-**Date:** 2026-08-04 (rev 4 — retargeted to the v3 brand canon)
+**Date:** 2026-08-04 (rev 5 — v3 tokens applied site-wide; `branding-kit/` pending)
 **Site audited:** this repo at `8a84d7c`
 **Brand canon:** **v3**, read off the live `ai-records-manager.com` (deployed 2026-08-03 20:16 GMT) — see §0
 **Pipeline:** `block-aero-brand-imagery` skill (Gemini via browser automation → guardrail check → sparkle patch → catalog in `images/MANIFEST.md`)
@@ -27,20 +27,26 @@ See §0 for the canon, §5 for the full diff.
 
 **Two caveats recorded honestly:**
 
-1. **No brand document exists.** There is no `tokens.json`, no style guide, no
-   published brand page — all 404. Nothing in Drive, Slack, Confluence, ReadMe, this
-   repo, or any installed skill documents or announces v3. The canon below is read
-   off shipped CSS and SVG, which is strong evidence for colour, type and logo, but
-   leaves usage rules and scope-of-application undocumented. Supernova
-   (`blockaero.supernova-docs.io`) is the likely authoritative home and is behind an
-   auth wall; Figma is org-authenticated but not enabled for this session. Either
-   would supersede §0 if opened.
-2. **`css/style.css` is now stale but NOT changed here.** It still ships
-   `--blue #1C5FC0`, `--navy #0E1320`, and Inter, and newpub is a *light* theme
-   (`--bg #ffffff`) whereas v3 is dark-on-navy. Reconciling the site's own
-   stylesheet with v3 is a site-wide design change well outside imagery scope. This
-   document governs **generated image content and treatment only**. Flagged, not
-   actioned.
+1. **`branding-kit/` is the intended authority and is NOT reachable from this
+   environment.** It was named as holding updated brand assets and instructions.
+   Searched and not found: every branch of this repo, the whole container
+   filesystem, all installed skills, claude.ai skills, and Google Drive (only a
+   2025 corporate-branding deck and unrelated hits). It is a local folder on a
+   workstation; this session runs in a cloud container with no path to it. **When it
+   lands, it supersedes §0 and §7.** To make it reachable, commit and push it —
+   `.gitignore` does not block a top-level `branding-kit/`, verified, and the deploy
+   workflow now strips it so it never ships.
+2. **No brand document was found in the meantime.** No `tokens.json`, no style
+   guide, no published brand page — all 404. Nothing in Drive, Slack, Confluence,
+   ReadMe, this repo, or any installed skill documents or announces v3. §0 is read
+   off shipped CSS and SVG: strong evidence for colour, type and logo, but usage
+   rules and scope-of-application remain undocumented. Supernova
+   (`blockaero.supernova-docs.io`) is behind an auth wall; Figma is
+   org-authenticated but not enabled for this session.
+3. **`css/style.css` HAS now been changed** — rev 4 flagged it as out of scope;
+   rev 5 actioned the part that v3 unambiguously determines. See §7. The light/dark
+   question is still untouched: newpub remains a light theme (`--bg #ffffff`) and
+   going dark is a redesign decision, not a token swap.
 
 ---
 
@@ -579,7 +585,101 @@ its own collateral and the deck. The abbreviation `ARM` is unaffected either way
 
 ---
 
+## 7. Site-wide brand token implementation (rev 5, DONE)
+
+Rev 4 flagged `css/style.css` as carrying the superseded palette and left it. Rev 5
+applied the part v3 unambiguously determines, via a scripted token map so the next
+change — including whatever `branding-kit/` turns out to say — is one file plus one
+command.
+
+### How it works
+
+- **`tools/brand-tokens.json`** — the single source of truth. Two sections:
+  `v3_determined` (applied) and `needs_branding_kit` (deliberately not applied,
+  each with the reason).
+- **`tools/apply-brand-tokens.py`** — applies the map. Idempotent, `--check` for a
+  dry run. Neither file ships: the deploy workflow strips `tools/`.
+
+### Why a script rather than hand edits
+
+Brand values are duplicated in **four** places, which is the real finding here — a
+palette change is not a one-file edit:
+
+1. `css/style.css` `:root` — the canonical custom properties
+2. **An inline `tailwind.config` block repeated on all 29 content pages**, restating
+   the same colours and fonts
+3. The **Google Fonts `<link>` on all 30 pages** — a token naming a typeface is
+   inert unless the link loads it. Missed, the new face silently falls back to
+   system sans site-wide.
+4. `js/block-aero-logo.js` — colour data for the animated mark
+
+Plus two forms the obvious search misses: brand colours as **`rgba()` triplets**
+(shadows, `::selection`, borders, dot patterns — 20 occurrences of the old blue) and
+brand colours inside **inline `<svg>` artwork**.
+
+### Applied
+
+| Token | From | To |
+|---|---|---|
+| `--blue` | `#1C5FC0` | `#3B82F0` |
+| `--blue-dark` | `#164C9A` | `#2563D4` |
+| `--font` | Inter | DM Sans (+ webfont link on all 30 pages) |
+| `--font-display` fallback | Inter | DM Sans |
+
+126 substitutions across 31 files. Zero occurrences of the old blue remain in any
+form — hex, `rgba()`, or Tailwind config — **except two deliberately protected
+lines.**
+
+### Protected, on purpose
+
+`js/block-aero-logo.js` holds the animated mark's colour ring as a `faces` array of
+`cs`/`ce` pairs — the logo's own spectrum gradient expressed as JS data rather than
+an SVG `linearGradient`. Per §0 the mark keeps the **old** blue at its 65% stop, so
+the script lifts that whole array out before substituting and puts it back after.
+A first attempt guarded by keyword and missed it, because no line in that array
+contains the word "gradient". 12 hexes protected.
+
+### Not applied — 11 tokens awaiting `branding-kit/`
+
+v3 as shipped is a **dark** marketing page with a small palette. newpub is a
+**light** enterprise theme with a fuller token set, so these have no v3 equivalent
+and were left rather than invented:
+
+| Token | Why it can't be derived from v3 |
+|---|---|
+| `--blue-light` | v3 retires `#2B86D4` and has no lighter blue step, but it is used in gradients site-wide so it cannot just be dropped |
+| `--navy`, `--navy-soft` | v3 retires `#0E1320` and `#141C2E`; its nearest values (`#111827`, `#0B1220`) are *panel surfaces*, not the heading/dark-band colour these drive |
+| `--ink`, `--slate`, `--mist` | Light-theme text ramp. v3's `#E8EDF5` / `#9AA6B8` / `#6B7589` are the **dark**-theme ramp — applying `--ink` would make body copy invisible on white |
+| `--line` | Light hairline; v3's `rgba(255,255,255,.12)` is dark-theme only |
+| `--bg`, `--bg-soft`, `--blue-tint` | Light surfaces; v3 has none |
+| `--font-mono` | v3's marketing page uses no mono, and other Block Aero surfaces disagree — IBM Plex Mono on ARM's legal pages vs SF Mono in `brand-init.js` |
+
+### Verified after the change
+
+29 Tailwind configs parse cleanly; all 30 webfont links load DM Sans and are
+well-formed; `<script>` tags balanced on every page; the mark untouched.
+(`404.html` lacks JetBrains Mono in its link — pre-existing on `main`, not caused
+here.)
+
+---
+
 ## 5. Revision history
+
+### rev 4 → rev 5 (v3 tokens applied site-wide)
+
+`branding-kit/` was named as the authority for updated brand assets and
+instructions. It is not reachable from this environment (see caveat 1), so rev 5
+implemented the subset of v3 that is unambiguously evidenced, behind a token map
+that makes re-running against `branding-kit/` a one-file change.
+
+Applied `--blue` → `#3B82F0`, `--blue-dark` → `#2563D4`, and Inter → DM Sans
+(including the webfont link, without which the change would have silently fallen
+back to system sans on 30 pages). 126 substitutions, 31 files. 11 tokens left
+pending with reasons. The animated mark's colour ring is protected. Full detail
+in §7 — including the four separate places this codebase duplicates brand values,
+which is why the change needed a script.
+
+No change to the 50-image inventory, the family mix, or any brief.
 
 ### rev 3 → rev 4 (`d082dfc` → `8a84d7c`, and a brand-canon change)
 
