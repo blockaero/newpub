@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /images/IMAGERY-SPEC.md
+Disallow: /images/README.md
+Disallow: /images/_pipeline/
+Disallow: /tools/
+Disallow: /branding-kit/
 
 Sitemap: https://www.block.aero/sitemap.xml

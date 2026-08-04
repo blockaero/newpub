@@ -1,0 +1,52 @@
+{
+  "_comment": [
+    "Single source of truth for Block Aero brand token values across newpub.",
+    "Edit ONLY this file, then run: python3 tools/apply-brand-tokens.py",
+    "It rewrites css/style.css :root, the inline tailwind.config block duplicated in",
+    "every HTML page, and js/block-aero-logo.js in one pass.",
+    "",
+    "AUTHORITY: branding-kit/ is the intended source of truth. It was not reachable",
+    "when this map was written, so v3_determined below is read off the live",
+    "ai-records-manager.com (deployed 2026-08-03). needs_branding_kit lists the",
+    "tokens v3 does NOT determine - see that section's own note."
+  ],
+
+  "v3_determined": {
+    "_note": "Evidenced literal values from the v3 surface. Safe to apply.",
+    "--blue":        { "from": "#1C5FC0", "to": "#3B82F0", "role": "primary blue - buttons, focus, links" },
+    "--blue-dark":   { "from": "#164C9A", "to": "#2563D4", "role": "primary blue, darker/hover state" },
+    "--orange":      { "from": "#E8761A", "to": "#E8761A", "role": "accent orange (unchanged)" },
+    "--gold":        { "from": "#F5C53A", "to": "#F5C53A", "role": "accent gold (unchanged)" },
+    "--navy-deep":   { "from": "#0A0E16", "to": "#0A0E16", "role": "page ground navy (unchanged)" },
+    "--green":       { "from": "#1AAB65", "to": "#1AAB65", "role": "verification ticks only - demoted from field colour" },
+    "--font":        { "from": "\"Inter\"", "to": "\"DM Sans\"", "role": "body typeface" },
+    "--font-display":{ "from": "\"Space Grotesk\"", "to": "\"Space Grotesk\"", "role": "display typeface (unchanged)" }
+  },
+
+  "needs_branding_kit": {
+    "_note": [
+      "v3 as shipped is a DARK marketing page with a small palette. newpub is a LIGHT",
+      "enterprise theme (--bg #ffffff) with a fuller token set. These tokens have no",
+      "v3 equivalent, and substituting v3's dark-theme values would break them - most",
+      "dangerously --ink, where v3's #E8EDF5 is body text ON navy and would be",
+      "invisible on newpub's white. Left at current values until branding-kit supplies",
+      "them. NOT invented."
+    ],
+    "--blue-light":  { "current": "#2B86D4", "problem": "v3 RETIRES #2B86D4 and has no lighter blue step. Used in gradients site-wide, so it cannot simply be dropped." },
+    "--blue-tint":   { "current": "#eaf1fb", "problem": "Light-theme wash. No v3 equivalent (v3 has no light surfaces)." },
+    "--navy":        { "current": "#0E1320", "problem": "v3 retires #0E1320. Its nearest values (#111827, #0B1220) are panel surfaces, not the heading/dark-band colour this token drives." },
+    "--navy-soft":   { "current": "#141C2E", "problem": "v3 retires #141C2E. Same panel-vs-token mismatch as --navy." },
+    "--ink":         { "current": "#1a2433", "problem": "Light-theme body text. v3's #E8EDF5 is the DARK-theme equivalent - applying it would make body copy invisible on white." },
+    "--slate":       { "current": "#4b5a6e", "problem": "Light-theme secondary text. v3's dark-theme counterpart is #9AA6B8." },
+    "--mist":        { "current": "#8494a8", "problem": "Light-theme tertiary text. v3's dark-theme counterpart is #6B7589." },
+    "--line":        { "current": "#e3e9f1", "problem": "Light-theme hairline. v3 uses rgba(255,255,255,.12), which is dark-theme only." },
+    "--bg":          { "current": "#ffffff", "problem": "newpub is light, v3 is dark-on-navy. Whether corporate goes dark is a redesign decision, not a token swap." },
+    "--bg-soft":     { "current": "#f6f8fb", "problem": "As --bg." },
+    "--font-mono":   { "current": "\"JetBrains Mono\"", "problem": "v3's marketing page uses no mono. Other Block Aero surfaces disagree: IBM Plex Mono (ARM legal pages) vs SF Mono (brand-init.js)." }
+  },
+
+  "logo_spectrum_gradient": {
+    "_note": "Deliberate exception: the mark's gradient keeps the OLD blue at its 65% stop. Do not retarget these to #3B82F0.",
+    "stops": ["#E8761A 0%", "#F5C53A 35%", "#1C5FC0 65%", "#1AAB65 100%"]
+  }
+}
