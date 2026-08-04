@@ -90,12 +90,41 @@ From `block-aero-brand-imagery`, non-negotiable:
   `check` at realistic display size before accepting.
 - One `MANIFEST.md` entry per finished file, in the skill's exact format.
 
-## Palette for this set
+## Palette for this set — v3 canon
 
-Pinned to match `css/style.css`, not the ARM set's `#0E1320`:
+Read off the live `ai-records-manager.com` (deployed 2026-08-03). **Not** from
+`css/style.css`, which still ships the superseded `#1C5FC0` / `#0E1320` / Inter. The
+full canon, including image treatment, is §0 of `images/IMAGERY-SPEC.md` — read that
+before generating.
 
-- Navy: `#0A0E16` / `#141C2E`
-- Blue: `#1C5FC0`, lighter `#2B86D4`
-- Orange: `#E8761A`
-- Gold: `#F5C53A`
-- Green: `#1AAB65`, lighter `#27C47A`
+- Navy ground: `#0A0E16`
+- **Primary blue: `#3B82F0`** (darker state `#2563D4`) — replaces `#1C5FC0`
+- Orange `#E8761A` · Gold `#F5C53A`
+- Text: `#E8EDF5` / `#9AA6B8` / `#6B7589`
+- Panels: `#111827` and `#0B1220`
+- Hairline `rgba(255,255,255,.12)` · Surface `rgba(10,14,22,.72)`
+- Green `#1AAB65` — verification ticks only, not a field colour
+
+**Retired — do not use:** `#141C2E`, `#2B86D4`, `#27C47A`.
+
+**One exception:** the logo spectrum gradient keeps the old blue —
+`#E8761A 0% → #F5C53A 35% → #1C5FC0 65% → #1AAB65 100%`.
+
+Type, for composited work only: Space Grotesk (display) + DM Sans (body).
+
+## Art direction — photography-led
+
+v3 is documentary photography with almost no illustration: the entire ARM homepage
+carries one 16px icon and no illustration library. This set is **28 photographs, 8
+isometric, 14 abstract**. Two consequences for anything generated here:
+
+- Photographs are generated **un-veiled and full-frame**. The navy veil gradient,
+  the 16px rounded panel, and the hairline border are applied in CSS at integration
+  — never baked into the image.
+- Everything in the `abstract` and `iso` families ships with a **`Concept` provenance
+  pill**. v3 never passes concept art off as product. Nothing generated may imply it
+  is a real product screenshot or a real customer record.
+
+Start with the photographed-paper class (11 of the 28 — controlled still life on a
+bench). It is v3's signature technique and the safest thing in the set: no liveries,
+no faces, no OEM logos can enter frame. Facility interiors come later.

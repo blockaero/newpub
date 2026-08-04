@@ -9,7 +9,7 @@ depend on, so don't reorder those.
 | 1 | C5–C11 | 7 | Social cards for all 27 pages |
 | 2 | C1–C4 | 4 | Homepage above the fold |
 | 3 | C12–C17 | 6 | 23 bare heroes + homepage problem section |
-| 4 | U18, U20, U26 | 3 | **Locks the isometric style for the other 18** |
+| 4 | U18, U33, U20 | 3 | **Locks BOTH visual languages** — photographed paper (U18, U33) and isometric (U20) |
 | 5 | U27–U34 | 8 | Solutions routing + 7 bare segments + ARM page |
 | 6 | U19, U21–U25 | 6 | Last of the concept placeholder wireframes |
 | 7 | U35–U42 | 8 | News, case study, about credibility |
@@ -56,9 +56,36 @@ Before generating anything:
   doesn't resolve, the slot has genuinely moved or gone — stop and say so rather
   than guessing at a nearby line.
 
-Palette, pinned to match css/style.css (NOT the ARM set's #0E1320):
-navy #0A0E16 / #141C2E, blue #1C5FC0 / #2B86D4, orange #E8761A, gold #F5C53A,
-green #1AAB65 / #27C47A.
+BRAND CANON: v3, read off live ai-records-manager.com (deployed 2026-08-03). Read
+IMAGERY-SPEC.md section 0 before generating — it has the full canon and the image
+treatment rules. Do NOT take the palette from css/style.css; that file still ships
+the SUPERSEDED #1C5FC0 / #0E1320 / Inter.
+
+Palette: navy ground #0A0E16; PRIMARY BLUE #3B82F0 (darker #2563D4); orange #E8761A;
+gold #F5C53A; text #E8EDF5 / #9AA6B8 / #6B7589; panels #111827 and #0B1220; hairline
+rgba(255,255,255,.12); green #1AAB65 for verification ticks ONLY, not as a field
+colour. RETIRED, do not use: #141C2E, #2B86D4, #27C47A. One exception: the logo
+spectrum gradient keeps the old blue — #E8761A 0% / #F5C53A 35% / #1C5FC0 65% /
+#1AAB65 100%.
+
+ART DIRECTION: v3 is DOCUMENTARY PHOTOGRAPHY-LED, not illustration. The entire ARM
+homepage carries one 16px icon and no illustration library. This set is 28
+photographs, 8 isometric, 14 abstract — if a brief in your batch reads as flat
+editorial illustration, check it against section 0; rev 4 re-briefed 15 entries from
+illustration to photography and the family word is part of the filename.
+
+Two treatment rules that change what you generate:
+- Generate photographs UN-VEILED and full-frame. The navy veil gradient, the 16px
+  rounded panel and the hairline border are applied in CSS at integration, never
+  baked into the image.
+- Everything in the abstract and iso families ships with a "Concept" provenance pill.
+  v3 never passes concept art off as product. Nothing you generate may imply it is a
+  real product screenshot or a real customer record.
+
+PRODUCT NAME: the v3 name is "Agentic Records Manager" (abbreviated ARM), not "AI
+Records Manager". Use it in briefs and alt text. The repo's HTML prose still says the
+old name 72 times — that is a separate copy change, listed in IMAGERY-SPEC section 6.
+Do NOT edit page prose as part of an imagery batch.
 
 Guardrails are non-negotiable and Block Aero has real exposure on two of them —
 it's an aviation compliance company and a blockchain company. Every image, every
@@ -141,16 +168,20 @@ carries a background image with a scrim dark enough for white type at every
 breakpoint, then apply the five bands across the 23 bare pages by the family
 mapping in spec C12-C16."*
 
-**Batch 4 is the style-lock batch and the most important one to get right.** Three
-images — one concept diagram (U18), one containment diagram (U20), one 1:1 tile
-(U26). Add to the prompt: *"These three exist to fix the isometric house style for
-the 18 that follow. Generate them, then write the settled values — isometric
-angle, line weight, platform thickness, node treatment, accent-colour rule — into
-a STYLE BLOCK section at the bottom of images/_pipeline/README.md so later batches
-reuse it verbatim. Show me the three before writing it down."*
+**Batch 4 is the style-lock batch and the most important one to get right.** Rev 4
+needs TWO languages locked, and the photographic one matters more: 28 of 50 images
+are photographs, only 8 remain isometric. Add to the prompt: *"Generate U18 and U33
+first — these two define how every document photograph in the set is lit, squared and
+framed, and 11 of the 28 photographs are that class. Then U20 for the isometric
+reference. Write the settled values — bench surface, raking-light angle, degree of
+fan, how paper reads as documents without reading as words; and for isometric, angle,
+line weight, platform thickness, node treatment — into a STYLE BLOCK section at the
+bottom of images/_pipeline/README.md so later batches reuse it verbatim. Show me all
+three before writing it down."*
 
 **Batch 5's seven tiles (U26–U32) must be generated in one sitting** against the
-locked style. They sit in a single grid where any inconsistency is visible at a
+locked style. Rev 4 re-briefed all seven from isometric tiles to square documentary
+crops. They sit in a single grid where any inconsistency is visible at a
 glance. Add: *"Generate all seven tiles consecutively without interruption, then
 review them as a set at grid size before accepting any of them."*
 
