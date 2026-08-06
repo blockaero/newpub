@@ -322,7 +322,7 @@ h4 { font-size: 1.05rem; }
   right: 3%;
   width: 360px;
   height: 320px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='320' viewBox='0 0 360 320'%3E%3Cg fill='none' stroke-width='1.5'%3E%3Cpolygon points='180,30 237,63 237,129 180,162 123,129 123,63' stroke='%231C5FC0' opacity='.32'/%3E%3Cpolygon points='268,120 308,143 308,189 268,212 228,189 228,143' stroke='%232B86D4' opacity='.28'/%3E%3Cpolygon points='118,150 158,173 158,219 118,242 78,219 78,173' stroke='%23E8761A' opacity='.24'/%3E%3Cpolygon points='205,221 234,238 234,272 205,289 176,272 176,238' stroke='%23F5C53A' opacity='.32'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='320' viewBox='0 0 360 320'%3E%3Cg fill='none' stroke-width='1.5'%3E%3Cpolygon points='180,30 237,63 237,129 180,162 123,129 123,63' stroke='%233B82F0' opacity='.32'/%3E%3Cpolygon points='268,120 308,143 308,189 268,212 228,189 228,143' stroke='%232B86D4' opacity='.28'/%3E%3Cpolygon points='118,150 158,173 158,219 118,242 78,219 78,173' stroke='%23E8761A' opacity='.24'/%3E%3Cpolygon points='205,221 234,238 234,272 205,289 176,272 176,238' stroke='%23F5C53A' opacity='.32'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
   animation: heroFloat 9s ease-in-out infinite;
   pointer-events: none;
 }
