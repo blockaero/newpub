@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       // Fallback: static brand mark image
       var img = document.createElement('img');
-      img.src = 'images/logo_ring.png';
+      img.src = 'images/brand/mark.svg';
       img.alt = 'Block Aero';
       el.appendChild(img);
     }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Block Aero — Loader Suite (v3)</title>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:#0B0F14;color:#E0E5EE}
+.wrap{max-width:1000px;margin:0 auto;padding:32px 20px 64px}
+h1{font-size:1.4rem;margin:0 0 8px}
+p{color:#8A92A6;margin:0 0 24px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.card{border:1px solid #2C3240;border-radius:12px;overflow:hidden;background:#12161E}
+.stage{min-height:140px;display:grid;place-items:center;padding:16px}
+.meta{padding:10px 12px;font-size:12px;color:#8A92A6}
+.meta b{display:block;color:#E0E5EE;margin-bottom:4px;font-size:13px}
+code{color:#F5C53A}
+a{color:#6B9FFF}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Loader suite proposal</h1>
+  <p>Vector Spectrum Wing GIFs — pick winners before wiring. Full write-up in the kit docs. <a href="/static/brand/v3/">← Brand kit</a></p>
+  <div class="grid" id="g"></div>
+</div>
+<script>
+const ids=[
+  ['01-splash-assemble','Splash assemble'],
+  ['02-splash-breathe','Splash breathe'],
+  ['03-loader-orbit','Orbit loader'],
+  ['04-connect-wave','Connect wave'],
+  ['05-connected-pulse','Connected pulse'],
+  ['06-transmit-stream','Transmit stream'],
+  ['07-offline-dim','Offline dim'],
+  ['08-spinner-sm','Small spinner'],
+  ['09-success-lock','Success lock'],
+  ['10-progress-scan','Progress scan'],
+  ['11-shimmer','Subtle L→R shimmer'],
+  ['11-shimmer-sm','Shimmer (48px)'],
+  ['11-shimmer-lg','Shimmer (240px)'],
+];
+const g=document.getElementById('g');
+for(const [id,t] of ids){
+  g.insertAdjacentHTML('beforeend',`<article class="card"><div class="stage"><img src="${id}.gif" alt="${t}"></div><div class="meta"><b>${t}</b><code>${id}.gif</code></div></article>`);
+}
+</script>
+</body>
+</html>
