@@ -29,7 +29,12 @@ jobs:
         # images/_pipeline holds raw image-generation output and provenance —
         # working state, never referenced by the HTML. Left in place it would
         # ship hundreds of MB of rejected generations to Pages.
-        run: rm -rf images/_pipeline images/IMAGERY-SPEC.md images/README.md tools branding-kit
+        run: |
+          rm -rf images/_pipeline images/IMAGERY-SPEC.md images/README.md tools branding-kit
+          # Brand kit demos/loaders live under images/brand but are not site assets
+          rm -rf images/brand/loaders images/brand/index.html images/brand/CLAUDE.md \
+                 images/brand/hangar-drift-splash.js images/brand/session-wip.js \
+                 images/brand/spectrum-loader.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

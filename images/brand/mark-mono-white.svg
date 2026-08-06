@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="Block Aero mark">
+  <title>Block Aero — Spectrum Wing</title>
+  
+  <g transform="translate(-3,0)">
+    <path fill="#FFFFFF" d="M12 16 L38 40 L12 64 L24 64 L50 40 L24 16 Z"/>
+    <path fill="#FFFFFF" d="M36 16 L62 40 L36 64 L48 64 L74 40 L48 16 Z"/>
+  </g>
+</svg>
