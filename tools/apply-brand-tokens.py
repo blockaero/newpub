@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """Apply tools/brand-tokens.json across every place newpub hardcodes a brand value.
 
-Why this exists: brand values are duplicated in FOUR places, so a palette or type
+Why this exists: brand values are duplicated in THREE places, so a palette or type
 change is not a one-file edit.
 
   1. css/style.css          — the :root custom properties (the canonical set)
-  2. *.html                 — an inline `tailwind.config` <script> block repeated on
-                              EVERY page, restating the same colours and fonts
-  3. *.html                 — the Google Fonts <link>, which must actually load any
+  2. *.html                 — the Google Fonts <link>, which must actually load any
                               typeface the tokens name (miss this and the new face
                               silently falls back to system sans on 30 pages)
-  4. js/block-aero-logo.js  — colour data for the animated mark
+  3. js/block-aero-logo.js  — colour data for the animated mark
+
+(The former inline `tailwind.config` block was removed — Tailwind CDN was unused.)
 
 Edit brand-tokens.json, run this, commit. Idempotent: safe to re-run.
 
@@ -153,27 +153,14 @@ def rewrite_css(pairs, apply):
 
 
 def rewrite_html(pairs, apply):
-    """Tailwind config block + Google Fonts link, per page."""
+    """Google Fonts link per page (legacy tailwind.config block ignored if present)."""
     results = []
     new_faces = [n for o, n, name in pairs if name == "--font"]
     for p in sorted(ROOT.glob("*.html")):
         src = text = p.read_text()
         hits = []
 
-        # (a) the inline tailwind.config block, scoped so page content and inline
-        #     SVG gradients are never touched
-        m = re.search(r'(<script>tailwind\.config=.*?</script>)', text, re.S)
-        if m:
-            block = new_block = m.group(1)
-            for old, new, name in pairs:
-                for o, n in zip(variants(old), variants(new)):
-                    if o in new_block:
-                        hits.append(f"tailwind {name}: {o} -> {n} ({new_block.count(o)})")
-                        new_block = new_block.replace(o, n)
-            if new_block != block:
-                text = text.replace(block, new_block)
-
-        # (b) the Google Fonts link — load whatever typeface the tokens now name
+        # Google Fonts link — load whatever typeface the tokens now name
         for face in new_faces:
             bare, seg = face.strip('"'), FONT_LINKS.get(face.strip('"'))
             if not seg:
@@ -257,7 +244,7 @@ def main():
 
     html = rewrite_html(pairs, apply)
     n = sum(len(h) for _, h in html)
-    print(f"\nHTML (tailwind config + webfont link): {len(html)} page(s), {n} change(s)")
+    print(f"\nHTML (webfont link): {len(html)} page(s), {n} change(s)")
     for name, hits in html[:2]:
         for h in hits:
             print(f"    {name}: {h}")

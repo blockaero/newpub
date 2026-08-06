@@ -2,8 +2,8 @@
   "_comment": [
     "Single source of truth for Block Aero brand token values across newpub.",
     "Edit ONLY this file, then run: python3 tools/apply-brand-tokens.py",
-    "It rewrites css/style.css :root, the inline tailwind.config block duplicated in",
-    "every HTML page, and js/block-aero-logo.js in one pass.",
+    "It rewrites css/style.css :root, Google Fonts links in HTML pages, and",
+    "js/block-aero-logo.js in one pass.",
     "",
     "AUTHORITY: branding-kit/ is the intended source of truth. It was not reachable",
     "when this map was written, so v3_determined below is read off the live",
