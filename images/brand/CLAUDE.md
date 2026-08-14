@@ -13,6 +13,25 @@ web) instead of re-exporting from SVG each time.
   Color section in `index.html`). If a re-render shows mostly blue/teal
   with no orange/gold, the renderer is broken — see gotcha below.
 
+## Block Aero Americas — brand selection (canon)
+**Block Aero Americas defaults to the black (ink) logo, not the Spectrum
+lockup.** This is an explicit sub-brand selection, not a fallback: build
+Americas surfaces with the ink lockup as the default mark.
+
+- **Default:** `lockup-horizontal-ink.svg` — `#0B0F14` mark and wordmark,
+  retaining the ember `#E8761A` Diamond Period.
+- **On dark grounds:** `lockup-horizontal-white.svg` (the ink lockup is
+  unreadable on navy; white is its counterpart, same geometry).
+- **Mark only:** `mark-mono-ink.svg` (`#0B0F14`), or `mark-mono-white.svg`
+  on dark.
+- **Do not** use `lockup-horizontal.svg` (Spectrum gradient) as the
+  Americas default — that remains the canon default for Block Aero
+  corporate surfaces, per the section above.
+
+Applies to `americas.html` and any Americas child pages when they ship
+(the nav entry is stubbed in `js/main.js`), plus Americas decks, email,
+and collateral.
+
 ## Session WIP indicator (canon)
 **`session-wip.js`** — occupancy loader for session / agent / model /
 Tessaron work-in-progress. Not a circular spinner.
