@@ -8,7 +8,7 @@ Two zones: **shipping** directories whose files are referenced by the HTML, and 
 | Directory | Holds | Status |
 |---|---|---|
 | `images/brand/` | Logo marks, wordmarks, lockups, morph animations | Complete — 19 files |
-| `images/logos/` | Partner and regulator logos | Complete — 13 files |
+| `images/logos/` | Partner marks in `<slug>/on-light` + `on-dark` pairs | See `images/logos/MANIFEST.md` |
 | `images/product/` | Real product UI screenshots | 9 files |
 | `images/photos/` | Documentary photography | 4 files → 13 planned |
 | `images/og/` | Social share cards, 1200×630 | New — 7 planned |

@@ -549,6 +549,42 @@ h4 { font-size: 1.05rem; }
 .logo-row { display: flex; justify-content: center; gap: 28px 46px; flex-wrap: wrap; align-items: center; }
 .logo-row img { height: 30px; width: auto; max-width: 170px; object-fit: contain; opacity: 0.82; transition: opacity 0.2s ease; }
 .logo-row img:hover { opacity: 1; }
+
+/* Partner mark helper — pick on-light / on-dark, or chip the existing pair */
+.plogo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  max-width: 170px;
+}
+.plogo img, .plogo svg { height: 30px; width: auto; max-width: 160px; object-fit: contain; display: block; }
+.plogo-chip-light {
+  background: #fff;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  padding: 6px 12px;
+  height: 42px;
+}
+.plogo-chip-dark {
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 6px 12px;
+  height: 42px;
+}
+.plogo-fallback {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  padding: 8px 16px;
+  border-radius: 999px;
+  height: auto;
+  white-space: nowrap;
+}
+.plogo-chip-light.plogo-fallback { color: var(--navy); border-color: var(--line); }
+.plogo-chip-dark.plogo-fallback { color: #fff; }
 /* Photo band */
 .photo-band { position: relative; background-size: cover; background-position: center; min-height: 340px; display: flex; align-items: center; }
 .photo-band::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,19,32,0.85) 0%, rgba(14,19,32,0.45) 70%, rgba(14,19,32,0.25) 100%); }
@@ -1089,17 +1125,22 @@ h4 { font-size: 1.05rem; }
   row-gap: 28px;
   animation: baMarquee 60s linear infinite;
 }
-.logo-strip .logo-track img {
+.logo-strip .logo-track img,
+.logo-strip .logo-track .plogo {
   flex: none;
+  margin-right: 46px;
+}
+.logo-strip .logo-track img {
   height: 30px;
   width: auto;
   max-width: 170px;
-  margin-right: 46px;
   object-fit: contain;
   opacity: 0.82;
   transition: opacity 0.2s ease;
 }
 .logo-strip .logo-track img:hover { opacity: 1; }
+.logo-strip .logo-track .plogo { opacity: 0.92; }
+.logo-strip .logo-track .plogo:hover { opacity: 1; }
 /* Pause on hover and on keyboard focus — logo images aren't focusable,
    so hover alone would leave keyboard users no way to stop it. */
 .logo-strip:hover .logo-track,
@@ -1120,7 +1161,8 @@ h4 { font-size: 1.05rem; }
     padding: 0 24px;
   }
   .logo-strip .logo-track img[data-clone],
-  .logo-strip .logo-track span[data-clone] { display: none; }
+  .logo-strip .logo-track span[data-clone],
+  .logo-strip .logo-track .plogo[data-clone] { display: none; }
   .logo-strip .logo-viewport { -webkit-mask-image: none; mask-image: none; }
 }
 
@@ -1197,10 +1239,9 @@ h4 { font-size: 1.05rem; }
   position: absolute; top: 22px; right: 22px; z-index: 2;
   height: 36px; width: auto; max-width: 140px;
   object-fit: contain;
-  background: #fff;
-  border-radius: 8px;
-  padding: 6px 10px;
-  box-shadow: var(--shadow-sm);
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
 }
 .story-card-mark {
   position: absolute; top: 22px; right: 22px; z-index: 2;
@@ -1248,6 +1289,14 @@ h4 { font-size: 1.05rem; }
   background: linear-gradient(180deg, #f4f8fe 0%, var(--bg-soft) 100%);
 }
 .news-media img { height: 52px; width: auto; max-width: 180px; object-fit: contain; }
+.news-media.news-media-chip-dark img {
+  background: var(--navy);
+  border-radius: 10px;
+  padding: 14px 18px;
+  height: 72px;
+  max-width: 200px;
+  box-sizing: content-box;
+}
 .news-media .news-media-fallback {
   font-family: var(--font-display); font-weight: 700;
   letter-spacing: 0.06em; color: var(--navy); font-size: 1.05rem;
